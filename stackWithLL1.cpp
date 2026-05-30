@@ -33,7 +33,7 @@ int main(){
     Stack<char>s;
     s.push('a');
     s.push('b');
-    s.top();
+    s.top();""
     s.pop();
     s.top();
     s.pop();
