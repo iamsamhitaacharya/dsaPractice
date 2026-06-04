@@ -8,10 +8,19 @@ class Queue{
     stack<int>s2;
 public:
     void push(int val){
-
+        while(!s1.empty()){
+            s2.push(s1.top());
+            s1.pop();
+        }
+        s1.push(val);
+        while(!s2.empty()){
+            s1.push(s2.top());
+            s2.pop();
+        }
     }
     void pop(){
-
+        if(s1.empty()) cout<<"queue is empty   ";
+        else s1.pop();
     }
     void front(){
         if(s1.empty()) cout<<"queue is empty   ";
