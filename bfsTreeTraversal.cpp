@@ -34,16 +34,29 @@ void bfs(Node* root){
     }
     queue<Node*>q;
     q.push(root);
+    q.push(NULL);
     while(!q.empty()){
         Node* curr= q.front();
         q.pop();
-        cout << curr->data << " ";
-        if(curr->left!=NULL){
-            q.push(curr->left);
+        if(curr==NULL){
+            cout << endl; 
+            if(q.empty()) break;
+            q.push(NULL); 
+            
+             
+        }else{
+            cout << curr->data << " ";
+        
+            if(curr->left!=NULL){
+                q.push(curr->left);
+            }
+            if(curr->right!=NULL){
+                q.push(curr->right);
+            }
         }
-        if(curr->right!=NULL){
-            q.push(curr->right);
-        }
+
+      
+        
     }
     
 
@@ -55,7 +68,7 @@ int main(){
     vector<int>nodes={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
     Node* root=buildTree(nodes);
     cout <<"root is " << root->data << endl;
-    cout <<"level-wise (BFS) traversal of a tree is: ";
+    cout <<"level-wise (BFS) traversal of a tree is: " << endl;
     bfs(root);
     return 0;
 }
