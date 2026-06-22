@@ -60,7 +60,12 @@ int dist(Node* root, int n){
     int left=dist(root->left,n);
     if(left!=-1){
         return left+1;
-    }else return dist(root->right,n)+1;
+    }
+    int right= dist(root->right,n);
+    if(right!=-1){
+        return right+1;
+    }
+    return -1;
 
 }
 
