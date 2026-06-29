@@ -54,21 +54,21 @@ void inorder(Node* root){
 }
 
 
-bool validateBST(Node* root,int max, int min){
+bool validateBST(Node* root,Node* max, Node* min){
     if(root==NULL){
         return true;
     }
-    if(min!=NULL && root->data <= min){
+    if(min!=NULL && root->data <= min->data){
         return false;
     }
-    if(max!=NULL && root->data >= max){
+    if(max!=NULL && root->data >= max->data){
         return false;
     }
-    if(!validateBST(root->left,root->data,min)){
-        return validateBST(root->left,root->data ,min);
+    if(!validateBST(root->left ,root , min)){
+        return validateBST(root->left,root ,min);
     }
-    if(!validateBST(root->right,max,root->data )){
-        return validateBST(root->right,max ,root->data );
+    if(!validateBST(root->right,max,root )){
+        return validateBST(root->right,max ,root );
     }
     return true;
 }
