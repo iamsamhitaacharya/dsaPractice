@@ -46,6 +46,7 @@ public:
 };
 
 static int maxSize = 0;
+static Node* largestRoot;
 
 Info* sizeOfLargestBST(Node* root){
     // if(root==NULL){
@@ -67,6 +68,7 @@ Info* sizeOfLargestBST(Node* root){
         && root->data < rightInfo->min){
         Info* currInfo = new Info(true,currMin, currMax, currSize);
         maxSize = max(maxSize, currSize);
+        largestRoot = root;
         return currInfo;
     }
   
@@ -80,7 +82,7 @@ int main(){
     cout <<"root is " << root->data;
     cout << endl;
     sizeOfLargestBST(root);
-    cout << "Size of largest BST is " << maxSize;
+    cout << "Size of largest BST is " <<   maxSize << endl << "root value of largest BST is " << largestRoot->data;
 
     return 0;
 }
