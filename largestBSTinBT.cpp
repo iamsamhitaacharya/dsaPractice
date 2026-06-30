@@ -48,8 +48,11 @@ public:
 static int maxSize = 0;
 
 Info* sizeOfLargestBST(Node* root){
-    if(root==NULL){
-        return new Info(true, INT_MAX, INT_MIN, 0);
+    // if(root==NULL){
+    //     return new Info(true, INT_MAX, INT_MIN, 0);
+    // }
+    if(root->left == NULL && root->right == NULL){
+         return new Info(true, root->data, root->data, 1);
     }
 
     Info* leftInfo = sizeOfLargestBST(root->left);
