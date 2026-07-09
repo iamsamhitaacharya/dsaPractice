@@ -52,6 +52,7 @@ public:
         int oldSize = totSize;
 
         totSize = 2* totSize;
+        currSize = 0;
         table = new Node*[totSize];
 
         for(int i=0; i<totSize; i++){
@@ -117,6 +118,19 @@ public:
         return -1;
     }
 
+    void print(){
+
+        for(int i =0; i<totSize; i++){
+            cout << "idx" << i << "->";
+            Node* temp = table[i];
+            while(temp!=NULL){
+                cout << "(" << temp->key << "," << temp->val << ")->";
+                temp = temp->next;
+            }
+            cout <<  endl;     
+        }
+    }
+
 
 };
 
@@ -129,6 +143,7 @@ int main(){
     ht.insert("Nepal", 10);
     ht.insert("UK", 20);
     cout << "The population of UK is: " << ht.search("UK") << "M";
-
+    cout << endl;
+    ht.print();
     return 0;
 }
