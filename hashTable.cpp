@@ -131,7 +131,24 @@ public:
         }
     }
 
+    void remove(string key){
+        int idx = HashFunction(key);
 
+        Node* temp = table[idx];
+        Node* prev = temp;
+        while(temp != NULL){
+            if(temp->key == key){
+                if(prev == temp){
+                    table[idx] = temp-> next;
+                }else{
+                    prev->next = temp->next;
+                }
+                break;
+            }
+            prev = temp;
+            temp = temp->next;
+        }
+    }
 };
 
 int main(){
@@ -144,6 +161,8 @@ int main(){
     ht.insert("UK", 20);
     cout << "The population of UK is: " << ht.search("UK") << "M";
     cout << endl;
+    ht.print();
+    ht.remove("China");
     ht.print();
     return 0;
 }
